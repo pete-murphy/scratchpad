@@ -1,0 +1,98 @@
+<div class="-layout-h -space-h-16"><div class="-layout-h -space-h-4 -center-center"><div class="icon -size-16 -color-green"><div class="-layout-h -center"><svg width="12" height="14" viewBox="0 0 12 14"><path d="M6 2.28S4.02 4.672 0 6.99v2.647s4.5-2.875 6.01-4.764C7.56 6.778 12 9.637 12 9.637V6.991C7.98 4.608 6 2.28 6 2.28z"></path><path d="M6 5.643s-1.98 2.392-6 4.711V13s4.5-2.875 6.01-4.763C7.56 10.142 12 13 12 13v-2.646c-4.02-2.383-6-4.71-6-4.71v-.001z"></path></svg></div></div><p class="-bold -font-size-14 -capitalize">medium</p></div><div class="-layout-h -space-h-4 -center-center"><div class="icon -size-16 -color-green"><div class="-layout-h -center"><svg width="16" height="16" viewBox="0 0 16 16"><path fill-rule="evenodd" clip-rule="evenodd" d="M8 16A8 8 0 1 1 8 0a8 8 0 0 1 0 16zm-1.43-3c-1.642-.344-2.462-1.136-2.462-2.376V9.612c0-.688-.37-1.032-1.108-1.032V7.42c.739 0 1.108-.346 1.108-1.037V5.31c.013-.613.225-1.11.636-1.487.414-.378 1.023-.653 1.825-.823L7 3.9c-.574.163-.873.621-.896 1.374v1.109c0 .763-.421 1.301-1.265 1.615.844.313 1.265.853 1.265 1.62v1.103c.023.753.322 1.211.896 1.374L6.57 13zm2.86 0c1.642-.344 2.462-1.136 2.462-2.376V9.612c0-.688.37-1.032 1.108-1.032V7.42c-.739 0-1.108-.346-1.108-1.037V5.31c-.013-.613-.225-1.11-.636-1.487-.414-.378-1.023-.653-1.825-.823L9 3.9c.574.163.873.621.896 1.374v1.109c0 .763.421 1.301 1.265 1.615-.844.313-1.265.853-1.265 1.62v1.103c-.023.753-.322 1.211-.896 1.374l.43.905z"></path></svg></div></div><p class="-bold -font-size-14 -capitalize">codewriting</p></div><div class="-layout-h -space-h-4 -center-center"><div class="icon -size-16 -color-green"><div class="-layout-h -center"><svg width="16" height="16" viewBox="0 0 16 16"><path d="M13.33 6.1l-2.8.395-.477 1.58 2.004-.22L11.03 9.6l-1.476.13L8 14.876 6.425 9.73 4.948 9.6 3.923 7.854l2.003.22-.454-1.58-2.8-.396-1.318-2.075 5.53 1.01L8 9.548l1.117-4.51 5.53-1.012L13.33 6.1zM0 8c0 4.418 3.582 8 8 8 4.42 0 8-3.582 8-8 0-4.42-3.58-8-8-8-4.418 0-8 3.58-8 8z" fill-rule="evenodd"></path></svg></div></div><p class="-bold -font-size-14 -capitalize">4000</p></div></div><div class="markdown -arial"><p>Not long ago, a spam campaign originated on some of the major social networks, and it's started to affect Kik users as well. Most of the spam comes from a limited number of highly-motivated individuals, possibly from a single group, who constantly update their spam software. What started off as some simple message-sending bots has now evolved into something that requires a large team of engineers to fight against it.</p>
+<p>At the beginning, the bots weren't that clever. The spam detection could essentially be narrowed down to checking messages against several simple criteria. For a user's stream of <code>messages</code> over a given time period, the spammer could be identified if:</p>
+<ul>
+<li>More than <code>90 %</code> of all messages had fewer than <code>5</code> words (here, a <em>word</em> is defined as a sequence of consecutive letters which is neither immediately preceded nor followed by another letter);</li>
+<li>More than <code>50 %</code> of messages to any one user had the same content, assuming that there were at least <code>2</code> messages to that user;</li>
+<li>More than <code>50 %</code> of all messages had the same content, assuming that there were at least <code>2</code> messages;</li>
+<li>More than <code>50 %</code> of all messages contained at least one of the words from the given list of <code>spamSignals</code> (the case of the letters doesn't matter).</li>
+</ul>
+<p>You are applying to the Anti-Spam Team at Kik, so you want to make sure you understand how this basic spam detection program worked. Implement a function that, given a stream of <code>messages</code> and a list of <code>spamSignals</code>, determines whether it's possible that the user might be a spammer by checking against the criteria above.</p>
+<p><span class="markdown--header" style="color:#2b3b52;font-size:1.4em">Example</span></p>
+<ul>
+<li>
+<p>For</p>
+<pre><code>messages = [["Sale today!", "2837273"],
+            ["Unique offer!", "3873827"],
+            ["Only today and only for you!", "2837273"],
+            ["Sale today!", "2837273"],
+            ["Unique offer!", "3873827"]]
+</code></pre>
+<p>and <code>spamSignals = ["sale", "discount", "offer"]</code>, the output should be</p>
+<pre><code>spamDetection(messages, spamSignals) = [
+  "passed",
+  "failed: 2837273 3873827",
+  "passed",
+  "failed: offer sale"
+]
+</code></pre>
+<p>Here are the results of the checks per criterion:</p>
+<ul>
+<li><code>4</code> out of <code>5</code> (<code>80 %</code>) messages have fewer than five words, which is within acceptable parameters = <code>"passed"</code>;</li>
+<li><code>2</code> out of <code>3</code> messages to user <code>2837273</code> are the same and both messages to user <code>3873827</code> are the same, which is a good indicator that they might be spam = <code>"failed: 2837273 3873827"</code>;</li>
+<li><code>2</code> out of <code>5</code> (<code>40 %</code>) messages have the same content, which is within acceptable parameters = <code>"passed"</code>;</li>
+<li><code>4</code> out of <code>5</code> (<code>80 %</code>) messages contain words from <code>spamSignals</code>. The two words that appear in the messages are <code>offer</code> and <code>sale</code> and <code>offer</code> is the lexicographically smaller of the two, so the output = <code>"failed: offer sale"</code>.</li>
+</ul>
+</li>
+<li>
+<p>For</p>
+<pre><code>messages = [["Check Codesignal out", "7284736"],
+            ["Check Codesignal out", "7462832"],
+            ["Check Codesignal out", "3625374"],
+            ["Check Codesignal out", "7264762"]]
+</code></pre>
+<p>and <code>spamSignals = ["sale", "discount", "offer"]</code>, the output should be</p>
+<pre><code>spamDetection(messages, spamSignals) = [
+  "failed: 1/1",
+  "passed",
+  "failed: Check Codesignal out",
+  "passed"
+]
+</code></pre>
+<p>Since all users in <code>messages</code> received only one message each, it's impossible to check the second criterion. The fourth criterion doesn't match: there are not any words from <code>spamSignals</code> in the messages. However, the first and the third criteria failed, since all the messages contain <code>4</code> words (<code>"failed: 1/1"</code>) and have the exact same content (<code>"failed: Check Codesignal out"</code>).</p>
+</li>
+</ul>
+<p><span class="markdown--header" style="color:#2b3b52;font-size:1.4em">Input/Output</span></p>
+<ul>
+<li>
+<p><strong>[execution time limit] 4 seconds (hs)</strong></p>
+</li>
+<li>
+<p><strong>[input] array.array.string messages</strong></p>
+<p>An array of messages, where each message is given in the format <code>[message, id of recipient]</code>.</p>
+<p><em>Guaranteed constraints:</em><br>
+<code>1 ≤ messages.length ≤ 100</code>,<br>
+<code>messages[i].length = 2</code>,<br>
+<code>1 ≤ messages[i][0].length ≤ 100</code>,<br>
+<code>1 ≤ int(messages[i][1]) ≤ 10<sup>9</sup></code>.</p>
+</li>
+<li>
+<p><strong>[input] array.string spamSignals</strong></p>
+<p>An array of unique spam signals, where each spam signal consists of lowercase English letters.</p>
+<p><em>Guaranteed constraints:</em><br>
+<code>1 ≤ spamSignals.length ≤ 30</code>,<br>
+<code>1 ≤ spamSignals[i].length ≤ 25</code>.</p>
+</li>
+<li>
+<p><strong>[output] array.string</strong></p>
+<p>An array of <code>4</code> strings containing the results of the spam checks per criterion. The results for each criterion should be given in the following format:</p>
+<ul>
+<li><code>"passed"</code> if the check doesn't suggest that the user is a spammer, otherwise:
+<ul>
+<li>for the first criterion: <code>"failed: &lt;failed_ratio&gt;"</code>, where <code>&lt;failed_ratio&gt;</code> is the ratio of messages with fewer than <code>5</code> words as a <a href="keyword://reduced-fraction" target="_blank">reduced fraction</a>;</li>
+<li>for the second criterion: <code>"failed: &lt;recipient_1&gt; &lt;recipient_2&gt; ..."</code>, where <code>&lt;recipient_i&gt;</code> is ID of the spammed user. Recipients should be sorted in ascending order of their IDs;</li>
+<li>for the third criterion: <code>"failed: &lt;message&gt;"</code>, where <code>&lt;message&gt;</code> is the message, which is equal to more than <code>50%</code> of all messages;</li>
+<li>for the fourth criterion: <code>"failed: &lt;spamSignal_1&gt; &lt;spamSignal_2&gt; ..."</code>, where <code>&lt;spamSignal_i&gt;</code> is the spam signal that appeared in at least one message. Spam signals should be sorted <a href="keyword://lexicographical-order-for-strings" target="_blank">lexicographically</a>.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p><strong>[Haskell] Syntax Tips</strong></p>
+<pre><code class="language-haskell"><span class="hljs-comment">-- Prints help message to the console</span>
+<span class="hljs-comment">-- Returns a string</span>
+<span class="hljs-title">helloWorld</span> name = unsafePerformIO $ <span class="hljs-keyword">do</span>
+    print <span class="hljs-string">"This prints to the console when you Run Tests"</span>
+    return $ <span class="hljs-string">"Hello, "</span> ++ name
+
+</code></pre>
+</div>

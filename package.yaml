@@ -1,0 +1,70 @@
+name: scratchpad
+version: 0.1.0.0
+github: "githubuser/scratchpad"
+license: BSD3
+author: "Author name here"
+maintainer: "example@example.com"
+copyright: "2019 Author name here"
+
+extra-source-files:
+  - README.md
+  - ChangeLog.md
+
+# Metadata used when publishing your package
+# synopsis:            Short description of your package
+# category:            Web
+
+# To avoid duplicated efforts in documentation and dealing with the
+# complications of embedding Haddock markup inside cabal files, it is
+# common to point users to the README.md file.
+description: Please see the README on GitHub at <https://github.com/githubuser/scratchpad#readme>
+
+dependencies:
+  - base >= 4.7 && < 5
+  - aeson
+  - attoparsec
+  - bifunctors
+  - brick
+  # - commander-cli
+  - comonad
+  - containers
+  - criterion
+  - doctest
+  # - esqueleto
+  - exceptions
+  - foldl
+  - generic-data
+  - generic-deriving
+  - haskeline
+  - hspec
+  - http-types
+  - lens
+  - megaparsec
+  # - monad-validate
+  - mtl
+  - newtype
+  - ordered-containers
+  - parsec
+  - parser-combinators
+  - postgresql-simple
+  - process
+  - QuickCheck
+  - quickcheck-classes
+  - random
+  - raw-strings-qq
+  - req
+  - rio
+  - scalpel
+  - semigroupoids
+  - split
+  - text
+  - these
+  - transformers
+  - transformers-compat
+  - unliftio-core
+  - validation
+  - wai
+  - wai-cors
+
+library:
+  source-dirs: src

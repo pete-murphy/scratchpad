@@ -1,0 +1,40 @@
+{-# LANGUAGE AllowAmbiguousTypes #-}
+{-# LANGUAGE DataKinds #-}
+{-# LANGUAGE DeriveFunctor #-}
+{-# LANGUAGE DeriveGeneric #-}
+{-# LANGUAGE DerivingStrategies #-}
+{-# LANGUAGE DerivingVia #-}
+{-# LANGUAGE FlexibleInstances #-}
+{-# LANGUAGE GADTs #-}
+{-# LANGUAGE GeneralizedNewtypeDeriving #-}
+{-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE PolyKinds #-}
+{-# LANGUAGE RankNTypes #-}
+{-# LANGUAGE RecordWildCards #-}
+{-# LANGUAGE ScopedTypeVariables #-}
+{-# LANGUAGE StandaloneDeriving #-}
+{-# LANGUAGE TypeApplications #-}
+{-# LANGUAGE TypeFamilies #-}
+{-# LANGUAGE TypeOperators #-}
+{-# LANGUAGE TypeSynonymInstances #-}
+{-# LANGUAGE ViewPatterns #-}
+
+module CommanderEx where
+
+import Control.Arrow
+import Options.Commander
+import System.Process
+
+main :: IO ()
+main = command_ . toplevel "file"
+  $ sub "maybe-read"
+  $ arg "filename"
+  $ \filename ->
+    flag "read" $ \b ->
+      raw $
+        if b
+          then putStrLn =<< readFile filename
+          else pure ()
+
+foo :: IO ()
+foo = command_ . toplevel @"good" $ raw $ callProcess "say" ["feels good man"]

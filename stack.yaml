@@ -1,0 +1,11 @@
+# resolver: lts-17.10
+resolver: lts-18.18
+
+extra-deps:
+  #   - commander-cli-0.1.0.0@sha256:e0f7e210a1b5b09a31baa420cd32728efbc95e6a7bdf6b535eb4b55b085c5247,1446
+  #   - esqueleto-3.4.2.0@sha256:f59c9427ec9e26a4ad45ee7fa5a5f6f88887a842857e76aaf2dcb0e65f7bcd3f,5783
+  #   - persistent-2.12.0.2@sha256:90f8e6182b320e119bfbb59e34ef59dbf818b8d16ce59722f4929a23d13a6092,5901
+  # - monad-validate-1.2.0.0@sha256:9850f408431098b28806dd464b6825a88a0b56c84f380d7fe0454c1df9d6f881,3505
+
+packages:
+  - "."
