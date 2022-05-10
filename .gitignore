@@ -2,3 +2,5 @@
 scratchpad.cabal
 *~
 dist-newstyle
+*.ignore.*
+ignore/

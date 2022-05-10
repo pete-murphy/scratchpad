@@ -35,10 +35,12 @@ dependencies:
   - foldl
   - generic-data
   - generic-deriving
+  - generic-lens
   - haskeline
   - hspec
   - http-types
   - lens
+  - lifted-async
   - megaparsec
   # - monad-validate
   - mtl
@@ -46,6 +48,7 @@ dependencies:
   - ordered-containers
   - parsec
   - parser-combinators
+  - pointedlist
   - postgresql-simple
   - process
   - QuickCheck
@@ -54,9 +57,12 @@ dependencies:
   - raw-strings-qq
   - req
   - rio
+  - say
+  - semirings
   - scalpel
   - semigroupoids
   - split
+  - stm
   - text
   - these
   - transformers
