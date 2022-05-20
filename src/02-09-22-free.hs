@@ -50,6 +50,7 @@ type IO' = Free IOF
 
 program :: IO' ()
 program = do
+  Impure (fmap pure (PutStrLn "Enter some text:\n" ()))
   str <- Impure (fmap pure (ReadLine id))
   Impure (fmap pure (PutStrLn str ()))
   Impure (fmap pure (PutStrLn str ()))

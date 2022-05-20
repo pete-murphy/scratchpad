@@ -46,7 +46,7 @@ filterTree' :: (a -> Bool) -> Tree a -> Maybe (Tree a)
 filterTree' p = foldTree \a maybeSubtrees -> do
   let subtrees = catMaybes maybeSubtrees
   guard (p a || not (null subtrees))
-  pure $ Node a subtrees
+  pure (Node a subtrees)
 
 -- | Input tree:
 -- >>> drawTree tree
