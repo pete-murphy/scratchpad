@@ -29,6 +29,7 @@ dependencies:
   - comonad
   - containers
   - criterion
+  - deriving-compat
   - doctest
   # - esqueleto
   - exceptions
@@ -58,6 +59,7 @@ dependencies:
   - req
   - rio
   - say
+  - selective
   - semirings
   - scalpel
   - semigroupoids
