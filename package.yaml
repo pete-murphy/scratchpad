@@ -38,6 +38,7 @@ dependencies:
   - generic-deriving
   - generic-lens
   - haskeline
+  # - hedgehog
   - hspec
   - http-types
   - lens
